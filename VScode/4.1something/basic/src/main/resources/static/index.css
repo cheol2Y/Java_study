@@ -1,0 +1,51 @@
+/* .app-container {
+  height: 100vh;
+  width: 100%;
+}
+.complete {
+  text-decoration: line-through;
+} */
+
+/* index.css */
+
+.app-container {
+  height: 100vh;
+  width: 100%;
+  background-color: #f8f9fa; /* Light gray background color */
+  padding: 20px;
+}
+
+h3 {
+  color: #007bff; /* Blue heading color */
+}
+
+.form-group {
+  margin-bottom: 0; /* Remove bottom margin for better alignment */
+}
+
+.table-wrapper {
+  margin-top: 20px;
+}
+
+.table {
+  background-color: #fff; /* White table background color */
+}
+
+.table th,
+.table td {
+  text-align: center; /* Center align text in table cells */
+}
+
+.table-success {
+  background-color: #d4edda; /* Green background for completed items */
+}
+
+.table-light {
+  background-color: #f8f9fa; /* Light gray background for incomplete items */
+}
+
+.complete {
+  text-decoration: line-through;
+}
+
+

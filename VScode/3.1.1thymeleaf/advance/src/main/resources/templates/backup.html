@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo List</title>
+  </head>
+  <body>
+    <h2>Todo List</h2>
+
+    <!-- Create Todo Form -->
+    <form th:action="@{/ver1/todo}" th:object="${todoDto}" method="post">
+      <label for="title">Title:</label>
+      <input type="text" id="title" name="title" th:field="*{title}" required />
+      <button type="submit">Add Todo</button>
+    </form>
+
+    <!-- Todo List -->
+    <table border="1">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Title</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="todo : ${todos}">
+          <td th:text="${todo.id}"></td>
+          <td th:text="${todo.title}"></td>
+          <td th:text="${todo.status} ? 'Completed' : 'In Progress'"></td>
+          <td>
+            <!-- Edit 버튼 -->
+            <a th:href="@{/ver1/todo/{id}/edit(id=${todo.id})}">Edit</a>
+
+            <!-- Delete 버튼 -->
+            <form
+              th:action="@{/ver1/todo/{id}(id=${todo.id})}"
+              th:method="delete"
+            >
+              <button type="submit">Delete</button>
+            </form>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

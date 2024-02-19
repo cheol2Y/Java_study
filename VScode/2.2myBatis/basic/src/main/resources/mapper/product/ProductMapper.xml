@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.basic.model.repository.ProductMapper">
+    
+    <!-- 조회할때는 select -->
+    <select id="selectAll" resultType="ProductDto">
+        select 
+            product_id 
+            , product_name 
+            , product_price 
+        from product
+        where 1=1
+        ;
+    </select>
+
+    <select id="selectProduct" resultType="ProductDto" parameterType="ProductDto">
+        select 
+            product_id 
+            , product_name 
+            , product_price 
+        from product
+        where 1=1
+        <if test='productName != null and productName != ""'>
+            and product_name = #{productName}
+        </if>
+        <if test='productPrice != null and productPrice > 0'>
+            and product_price = #{productPrice}
+        </if>
+        ;
+    </select>
+
+    <!-- 데이터를 저장할 때는 insert  -->
+    <insert id="insertProduct" parameterType="ProductDto">
+    insert into product(product_name, product_price)
+    values (#{productName}, #{productPrice});
+    </insert>
+
+    <update id="updateProduct" parameterType="ProductDto">
+        update product
+        <set>
+            <if test='productName != null and productName != ""'>
+                product_name = #{productName}
+            </if>
+            <if test='productPrice != null and productPrice > 0'>
+                product_price = #{productPrice}
+            </if>
+        </set>
+        where 1=1
+            and product_id = #{productId}
+    </update>
+
+    <delete id="deleteProduct">
+        delete from product 
+        where 1=1
+            and product_id = #{productId}
+        ;
+    </delete>
+</mapper>
+

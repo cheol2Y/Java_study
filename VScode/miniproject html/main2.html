@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>PrediStocks</title>
+    <link rel="stylesheet" href="./main.css" />
+  </head>
+  <body>
+    <header>
+      <h1>PrediStocks</h1>
+
+      <div id="current-time"></div>
+      <script src="./time.js"></script>
+      <!-- <button type="login" class="login">로그인</button>    -->
+      <form
+        action="/login"
+        method="post"
+        class="px-4 py-2 bg-green-500 text-white rounded w-full cursor-pointer"
+      >
+        <input
+          type="submit"
+          value="로그인"
+          class="px-4 py-2 bg-green-500 text-white rounded w-full cursor-pointer"
+        />
+      </form>
+
+      <!-- <script src="./static/js/login.js"></script> -->
+      <!-- <a id="authButton" href="loginForm" class="login">로그인</a></form> -->
+      <!-- <button type="login" class="login">로그인</button> -->
+    </header>
+    <main>
+      <h2>Stocks to Track</h2>
+      <div class="search">
+        <input type="text" placeholder="Search" />
+        <button>검색</button>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>기업명</th>
+            <th>현재가</th>
+            <th>전일</th>
+            <th>고가</th>
+            <th>저가</th>
+            <th>거래량</th>
+            <th>등락율</th>
+          </tr>
+
+          <tr>
+            <td>name</td>
+            <td>close</td>
+            <td>open</td>
+            <td>high</td>
+            <td>low</td>
+            <td>volume</td>
+            <td>change</td>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Add more rows with actual data here -->
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.basic.model.repository.BlogMapper">
+    
+    <!-- 조회할때는 select -->
+    <select id="selectAll" resultType="BlogDto">
+        select 
+            blog_num 
+            , blog_title
+            , blog_tag
+            , blog_content
+            , blog_dt
+        from blog
+        where 1=1
+        ;
+    </select>
+<!-- resultType은 return하는 값이 있을때 사용한다. parameterType은 parameter가 있을때 사용한다.
+          보면 ProductDto에서 입력해주는 값이나 출력하는 값의 형태를 변형 시켜준다고 생각 ㅇㅇ-->
+    <select id="selectBlog" resultType="BlogDto" parameterType="BlogDto">
+        select 
+            blog_num 
+            , blog_title
+            , blog_tag
+            , blog_content
+            , blog_dt
+        from blog
+        where 1=1
+        <if test='blogTitle != null and blogTitle != ""'>
+            and blgo_title = #{blogTitle}
+        </if>
+        ;
+    </select>
+
+    <!-- 데이터를 저장할 때는 insert  -->
+    <insert id="insertBlog" parameterType="BlogDto">
+    insert into blog(blog_title, blog_tag,blog_content)
+    values (#{blogTitle}, #{blogTag}, #{blogContent});
+    </insert>
+
+    <update id="updateBlog" parameterType="BlogDto">
+        update blog
+        <set>
+            <if test='blogTitle != null and blogTitle != ""'>
+                blog_title = #{blogTitle}
+            </if>
+            <if test='blogTag != null and blogTag != ""'>
+                blog_tag = #{blogTag}
+            </if>
+            <if test='blogContent != null and blogContent != ""'>
+                blog_content = #{blogContent}
+            </if>
+        </set>
+        where 1=1
+            and blog_num = #{blogNum}
+    </update>
+
+    <delete id="deleteBlog">
+        delete from blog 
+        where 1=1
+            and blog_num = #{blogNum}
+        ;
+    </delete>
+</mapper>
+
